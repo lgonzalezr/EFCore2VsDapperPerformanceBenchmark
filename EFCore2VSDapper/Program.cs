@@ -1,9 +1,5 @@
 ﻿using BenchmarkDotNet.Running;
-using NowMobRep.Models;
 using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
 
 namespace EFCore2VSDapper
 {

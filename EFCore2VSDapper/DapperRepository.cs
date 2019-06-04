@@ -13,12 +13,12 @@ namespace EFCore2VSDapper
 {
     public class DapperRepository
     {
-        public List<UsersGeneral> GetUsersWithDapper()
+        public List<Authors> GetUsersWithDapper()
         {
-            using (IDbConnection db = new SqlConnection(@"Server=192.168.112.20\SQLEXPRESS;Database=DBNAME;User Id=sa;Password=Password;Trusted_Connection=false;"))
+            using (IDbConnection db = new SqlConnection(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TestDB2;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                return db.Query<UsersGeneral>
-                ($"select top 5000 * from users_general").ToList();
+                return db.Query<Authors>
+                ($"select top 5000 * from Authors").ToList();
 
             }
         }

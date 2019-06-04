@@ -10,11 +10,11 @@ namespace EFCore2VSDapper
 {
     public class ADORepository
     {
-        public List<UsersGeneral> GetUsersWithADO()
+        public List<Authors> GetUsersWithADO()
         {
-            using (var conn = new SqlConnection(@"Server=192.168.112.20\SQLEXPRESS;Database=DbName;User Id=sa;Password=Password;Trusted_Connection=false;"))
+            using (var conn = new SqlConnection(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TestDB2;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
-                var sql = "select top 5000 * from users_general";
+                var sql = "select top 5000 * from Authors";
                 using (var cmd = new SqlCommand(sql, conn))
                 {
                     using (var adapter = new SqlDataAdapter(cmd))
@@ -23,10 +23,11 @@ namespace EFCore2VSDapper
                         adapter.Fill(resultTable);
 
                         return (from DataRow dr in resultTable.Rows
-                                           select new UsersGeneral()
+                                           select new Authors()
                                            {
-                                               Account = Convert.ToInt64(dr["Account"]),
-                                               ClimapAccessCode = dr["display_sip_password"].ToString()
+                                               Id = Convert.ToInt32(dr["Id"]),
+                                               Name = dr["Name"].ToString(),
+                                               Country = dr["Country"].ToString()
                                            }).ToList();
                     }
                 }
