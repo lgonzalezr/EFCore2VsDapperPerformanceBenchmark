@@ -12,7 +12,7 @@ namespace EFCore2VSDapper
     {
         public List<Authors> GetUsersWithADO()
         {
-            using (var conn = new SqlConnection(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=TestDB2;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            using (var conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestDB2;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
                 var sql = "select top 5000 * from Authors";
                 using (var cmd = new SqlCommand(sql, conn))

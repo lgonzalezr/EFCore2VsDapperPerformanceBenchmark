@@ -14,7 +14,7 @@ namespace EFCore2VSDapper
         {
             using (var db = new EFCore2TestContext())
             {
-                return db.Authors.FromSql("Select top 5000 * from Authors").AsNoTracking().ToList();
+                return db.Authors.FromSqlRaw("Select top 5000 * from Authors").AsNoTracking().ToList();
                 //return db.UsersGeneral.Take(5000).AsNoTracking().ToList();
             }
         }
